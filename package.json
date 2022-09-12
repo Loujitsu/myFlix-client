@@ -19,11 +19,13 @@
   "homepage": "https://github.com/Loujitsu/myFlix-client#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
+    "buffer": "^6.0.3",
     "parcel": "^2.7.0",
     "process": "^0.11.10"
   }
