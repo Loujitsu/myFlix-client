@@ -17,19 +17,14 @@ export class MainView extends React.Component {
 
     componentDidMount() {
         axios.get('https://movie-flix-289893.herokuapp.com/movies', 
-        {
-            headers : {
-                Authorization: "Bearer " + `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmViZjQzNDNmNzkwZDM5NDdiNWQxYTAiLCJVc2VybmFtZSI6IlRoZVJvY2s0IiwiUGFzc3dvcmQiOiIkMmIkMTAkTkRtZ2V0a3A0emlTdHd4V0dUZVNnT29aOFlLbWVJRlgzdFc4N3JoTjlPbVc2ZjNUbDk3QjYiLCJFbWFpbCI6InJvY2t5NEBlbWFpbC5jb20iLCJCaXJ0aGRheSI6IjE4NzYtMDEtMDJUMDA6MDA6MDAuMDAwWiIsIkZhdm9yaXRlTW92aWVzIjpbIjYyOGRjYzFhMjNkZDhlNWNkNDUwN2ExZSJdLCJfX3YiOjAsImlhdCI6MTY2MzI5OTM3MiwiZXhwIjoxNjYzOTA0MTcyLCJzdWIiOiJUaGVSb2NrNCJ9.5RGAHYnjN5UCSgAh9FVey7ZrSj6AX1UEpquZpK3dOxo`
-            }
-        })
-            .then(response => {
-                this.setState({
-                    movies: response.data
-                });
-            })
-            .catch(error => {
-                console.log(error);
+        .then(response => {
+            this.setState({
+              movies: response.data
             });
+          })
+          .catch(error => {
+            console.log(error);
+          });
     }
 
     setSelectedMovie(newSelectedMovie) {
