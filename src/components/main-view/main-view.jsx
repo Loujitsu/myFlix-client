@@ -5,6 +5,7 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import { Container, Row, Col } from 'react-bootstrap';
 
 
 export class MainView extends React.Component {
@@ -58,15 +59,34 @@ export class MainView extends React.Component {
         if (movies.length === 0) return <div className="main-view">List is empty</div>;
 
         return (
-            <div className="main-view">
-                {selectedMovie
-                    ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-                    : movies.map(movie => (
-                        <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-            ))
-        }
-            </div>
+          <Row className="main-view justify-content-md-center">
+              {selectedMovie
+                  ? (
+                      <Col md={8}>
+                          <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+                      </Col>
+                  )
+                  : movies.map(movie => (
+                      <Col md={3}>
+                          <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+                      </Col>
+                  ))
+              }
+          </Row>
         );
+
+        // return (
+        //   <Container>
+        //     <div className="main-view">
+        //         {selectedMovie
+        //             ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+        //             : movies.map(movie => (
+        //                 <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+        //     ))
+        // }
+        //     </div>
+        //   </Container>
+        // );
     }
 }
 
