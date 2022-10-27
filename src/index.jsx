@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import MainView from './components/main-view/main-view';
 import Container from 'react-bootstrap/Container';
 
-const distance = ref.current?.getBoundingClientRect().x ?? 0 - 50;
-
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 
