@@ -22,6 +22,7 @@ export class MainView extends React.Component {
     componentDidMount(){
       axios.get('https://movie-flix-289893.herokuapp.com/movies')
         .then(response => {
+          console.log("movie", response.data)
           this.setState({
             movies: response.data
           });
@@ -38,11 +39,12 @@ export class MainView extends React.Component {
       }
 
       getMovies(token) {
-        axios.get('movie-flix-289893.herokuapp.com/movies', {
+        axios.get('https://movie-flix-289893.herokuapp.com/movies', {
           headers: { Authorization: `Bearer ${token}`}
         })
         .then(response => {
           // Assign the result to the state
+          console.log("get movies", response.data);
           this.setState({
             movies: response.data
           });
@@ -66,12 +68,12 @@ export class MainView extends React.Component {
 
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
-      this.getMovies(authData.token);
+      // this.getMovies(authData.token);
     }
 
     render() {
         const { movies, selectedMovie, user, register } = this.state;
-
+          console.log("render movies", movies);
         if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
 
         if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
